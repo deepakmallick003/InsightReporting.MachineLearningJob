@@ -1,6 +1,10 @@
 import logging
 import core.logging
 
-logging.info("Insight job is running")
+import time
 
 print('Insight job is running')
+
+logging.info("Insight job is running")
+
+time.sleep(60 * 5)
