@@ -1,0 +1,8 @@
+cronjobs:
+  - name: "insightreportingml.job"
+    schedule: "*/30 * * * *"   # every 30 minutes
+    #scheduleOverride:
+    #  - environment: "development"     # this should match the namespace
+    #    schedule: "off"
+    #  - environment: "qa"     # this should match the namespace
+    #    schedule: "off"
