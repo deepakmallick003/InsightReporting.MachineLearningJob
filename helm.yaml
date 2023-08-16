@@ -7,5 +7,7 @@ cronjobs:
     #  - environment: "qa"     # this should match the namespace
     #    schedule: "off"
 
+    technology: static
+
     seq:  
       -enabled: true
