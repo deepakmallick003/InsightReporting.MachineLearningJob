@@ -12,5 +12,5 @@ data = retraining.read_from_excel()
 print(acc, roc_auc)
 
 # Serilized training model to disk
-retraining.save_models('2', lr_tfidf, tfidf_vectorizer, rfc_model,
+retraining.save_models('3', lr_tfidf, tfidf_vectorizer, rfc_model,
                        preprocessing)
