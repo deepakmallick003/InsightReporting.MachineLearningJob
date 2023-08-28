@@ -1,10 +1,16 @@
 import logging
 import core.logging
+from scripts.retraining import retraining
 
-import time
+# Read training data
+data = retraining.read_from_excel()
 
-print('Insight job is running')
+# Generate models from training data
+[acc, roc_auc, lr_tfidf, tfidf_vectorizer, rfc_model,
+    preprocessing] = retraining.generate_models(data)
 
-logging.info("Insight job is running")
+print(acc, roc_auc)
 
-time.sleep(60 * 5)
+# Serilized training model to disk
+retraining.save_models('2', lr_tfidf, tfidf_vectorizer, rfc_model,
+                       preprocessing)

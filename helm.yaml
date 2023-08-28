@@ -1,13 +1,23 @@
 cronjobs:
   - name: "insightreportingml.job"
     schedule: "*/30 * * * *"   # every 30 minutes
-    #scheduleOverride:
-    #  - environment: "development"     # this should match the namespace
-    #    schedule: "off"
-    #  - environment: "qa"     # this should match the namespace
-    #    schedule: "off"
 
     technology: static
 
     seq:  
       -enabled: true
+
+    smbShares:
+      - name: mlmodels
+        mountPath: /app/data
+
+    mountSecrets:
+      - secret: insightreporting-modelstorage
+        mappings:
+          - key: StorageDirectory
+            nameAs: FileStoreSettings__StorageDirectory
+
+smbShares:
+  - name: mlmodels
+    location: \\cabifs\InsightReportingMLModels
+    credentials: contentsubmission-serviceaccount
