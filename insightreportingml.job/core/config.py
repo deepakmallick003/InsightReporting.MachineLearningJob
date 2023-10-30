@@ -27,6 +27,9 @@ class Settings(ApplicationSettings):
     @property
     def parsed_connection_string(self):
         components = dict(item.split('=') for item in self.CONN_STRING.split(';') if item)
+        for key in components:
+            if components[key]:
+                print(f"{key.capitalize()} value retrieved.")
         return {
             'database': components.get('database', ''),
             'username': components.get('username', ''),

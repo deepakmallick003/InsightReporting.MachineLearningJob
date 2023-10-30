@@ -2,10 +2,7 @@ cronjobs:
   - name: "insightreportingml.job"
     schedule: "*/10 * * * *"   # every 10 minutes
 
-    technology: static
-
-    sqlConnections:
-      - name: insightreporting
+    technology: static    
 
     seq:  
       -enabled: true
@@ -19,6 +16,9 @@ cronjobs:
         mappings:
           - key: StorageDirectory
             nameAs: FileStoreSettings__StorageDirectory          
+
+sqlConnections:
+  - name: insightreporting
 
 smbShares:
   - name: mlmodels
