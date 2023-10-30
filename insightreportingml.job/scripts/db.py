@@ -6,7 +6,7 @@ from core.config import settings
 
 class DatabaseManager:
     def __init__(self, logging):
-        self.connection_string = f'DRIVER={settings.DB_DRIVER};SERVER={settings.DB_SQLSERVER};DATABASE={settings.DB_NAME};UID={settings.DB_UID};PWD={settings.DB_PWD};'
+        self.connection_string = settings.pyodbc_connection_string
         self.logging = logging
 
     def __enter__(self):

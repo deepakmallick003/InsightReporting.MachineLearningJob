@@ -18,16 +18,7 @@ cronjobs:
       - secret: insightreporting-modelstorage
         mappings:
           - key: StorageDirectory
-            nameAs: FileStoreSettings__StorageDirectory
-      - secret: sqlConnections
-        mappings:
-          - key: insightreporting-database
-            nameAs: DB_NAME
-          - key: insightreporting-username
-            nameAs: DB_UID
-          - key: insightreporting-password
-            nameAs: DB_PWD
-          
+            nameAs: FileStoreSettings__StorageDirectory          
 
 smbShares:
   - name: mlmodels
