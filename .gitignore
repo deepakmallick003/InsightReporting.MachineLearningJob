@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vscode
+/.vs
+/insightreportingml.job/.vscode
+/insightreportingml.job/core/__pycache__
+/insightreportingml.job/scripts/__pycache__
+/insightreportingml.job/.env
+/insightreportingml.job/mlmodels/
+.env
