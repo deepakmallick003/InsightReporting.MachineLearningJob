@@ -1,5 +1,5 @@
 # Insight Reporting Machine learing JOB
-
+ 
 ## Project Overview
 The purpose of the PlantwisePlus.InsightReporting.MicroService.MachineLearningJOB project is to Retrain Machine Learning Model
 
@@ -28,6 +28,8 @@ The purpose of the PlantwisePlus.InsightReporting.MicroService.MachineLearningJO
 * openpyxl>=3.1.2
 * imbalanced-learn>=0.11.0
 * scikit-learn<= 1.3.2
+* spacy>=3.7.2
+* nltk>=3.8.1
 
 ### Notes
 * Create virtual enviornment 
