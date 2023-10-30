@@ -4,6 +4,9 @@ cronjobs:
 
     technology: static
 
+    sqlConnections:
+      - name: insightreporting
+
     seq:  
       -enabled: true
 
@@ -16,10 +19,10 @@ cronjobs:
         mappings:
           - key: StorageDirectory
             nameAs: FileStoreSettings__StorageDirectory
-      - secret: db
+      - secret: sqlConnections
         mappings:
-          - key: insightreportingml-job-dbsqlserver
-            nameAs: DB_SQLSERVER
+          - key: insightreporting-database
+            nameAs: DB_NAME
           - key: insightreporting-username
             nameAs: DB_UID
           - key: insightreporting-password
@@ -28,5 +31,5 @@ cronjobs:
 
 smbShares:
   - name: mlmodels
-    location: \\cabifs\InsightReportingMLModels
+    location: \\cabifs.cabi.org\InsightReportingMLModels
     credentials: contentsubmission-serviceaccount
