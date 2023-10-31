@@ -1,6 +1,6 @@
 cronjobs:
   - name: "insightreportingml.job"
-    schedule: "*/10 * * * *"   # every 10 minutes
+    schedule: "*/5 * * * *"   # every 5 minutes
 
     technology: static    
 
