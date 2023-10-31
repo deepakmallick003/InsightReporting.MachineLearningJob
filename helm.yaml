@@ -1,21 +1,11 @@
-applications:
+cronjobs:
   - name: "insightreportingml.job"
-    
-    sqlConnections:
-      - name: insightreporting
-
-    image:
-      strategy: Recreate
-      versions:
-        - replicas: 1
+    schedule: "*/10 * * * *"   # every 10 minutes
 
     technology: static    
 
     seq:  
       -enabled: true
-
-    service:
-      enabled: false
 
     smbShares:
       - name: mlmodels
@@ -25,7 +15,19 @@ applications:
       - secret: insightreporting-modelstorage
         mappings:
           - key: StorageDirectory
-            nameAs: FileStoreSettings__StorageDirectory
+            nameAs: FileStoreSettings__StorageDirectory   
+      - secret: insightreporting
+        mappings:
+          - key: insightreporting-db-name
+            nameAs: InsightReporting_DB_NAME
+          - key: insightreporting-db-user-name
+            nameAs: InsightReporting_DB_UID 
+          - key: insightreporting-db-password
+            nameAs: InsightReporting_DB_PWD 
+
+
+sqlConnections:
+  - name: insightreporting
 
 smbShares:
   - name: mlmodels
