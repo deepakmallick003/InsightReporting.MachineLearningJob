@@ -8,7 +8,7 @@ class ApplicationSettings(BaseSettings):
     SEQ_SERVER: str = Field(default='',env='SEQ_SERVER')
     MLMODEL_DIRECTORY: str = Field(default='', env='FileStoreSettings__StorageDirectory')
     CONN_STRING: str = Field(default='', env='ConnectionStrings__insightreporting')
-    DB_SERVER: str = Field(default='DEVDB01', env='SQLServerInstance')
+    DB_SERVER: str = Field(default='', env='SQLServerInstance')
     DB_NAME: str = Field(default='', env='InsightReporting_DB_NAME')
     DB_UID: str = Field(default='', env='InsightReporting_DB_UID')
     DB_PWD: str = Field(default='', env='InsightReporting_DB_PWD')
