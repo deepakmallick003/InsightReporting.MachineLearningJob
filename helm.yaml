@@ -1,11 +1,21 @@
-cronjobs:
+applications:
   - name: "insightreportingml.job"
-    schedule: "*/10 * * * *"   # every 10 minutes
+    
+    sqlConnections:
+      - name: insightreporting
+
+    image:
+      strategy: Recreate
+      versions:
+        - replicas: 1
 
     technology: static    
 
     seq:  
       -enabled: true
+
+    service:
+      enabled: false
 
     smbShares:
       - name: mlmodels
@@ -15,19 +25,7 @@ cronjobs:
       - secret: insightreporting-modelstorage
         mappings:
           - key: StorageDirectory
-            nameAs: FileStoreSettings__StorageDirectory   
-      - secret: cabi-sqlserver-connectionstrings
-        mappings:
-          - key: insightreporting-database
-            nameAs: DB_NAME
-          - key: insightreporting-username
-            nameAs: DB_UID 
-          - key: insightreporting-password
-            nameAs: DB_PWD 
-
-
-sqlConnections:
-  - name: insightreporting
+            nameAs: FileStoreSettings__StorageDirectory
 
 smbShares:
   - name: mlmodels
