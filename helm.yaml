@@ -15,7 +15,16 @@ cronjobs:
       - secret: insightreporting-modelstorage
         mappings:
           - key: StorageDirectory
-            nameAs: FileStoreSettings__StorageDirectory          
+            nameAs: FileStoreSettings__StorageDirectory   
+      - secret: cabi-sqlserver-connectionstrings
+        mappings:
+          - key: insightreporting-database
+            nameAs: DB_NAME
+          - key: insightreporting-username
+            nameAs: DB_UID 
+          - key: insightreporting-password
+            nameAs: DB_PWD 
+
 
 sqlConnections:
   - name: insightreporting

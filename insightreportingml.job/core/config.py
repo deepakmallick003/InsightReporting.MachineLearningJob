@@ -8,6 +8,10 @@ class ApplicationSettings(BaseSettings):
     SEQ_SERVER: str = Field(default='',env='SEQ_SERVER')
     MLMODEL_DIRECTORY: str = Field(default='', env='FileStoreSettings__StorageDirectory')
     CONN_STRING: str = Field(default='', env='ConnectionStrings__insightreporting')
+    DB_SERVER: str = Field(default='DEVDB01', env='DB_SERVER')
+    DB_NAME: str = Field(default='', env='DB_NAME')
+    DB_UID: str = Field(default='', env='DB_UID')
+    DB_PWD: str = Field(default='', env='DB_PWD')
 
 class Settings(ApplicationSettings):
    
@@ -39,11 +43,25 @@ class Settings(ApplicationSettings):
 
     @property
     def pyodbc_connection_string(self):
-        parsed = self.parsed_connection_string
-        return (f"DRIVER={self.DB_DRIVER};"
-                f"SERVER={parsed['server']};"
-                f"DATABASE={parsed['database']};"
-                f"UID={parsed['username']};"
-                f"PWD={parsed['password']};")
+        if self.CONN_STRING:
+            print("connection string retrived")
+            parsed = self.parsed_connection_string
+            if parsed['server']:
+                print(f"DB Server: {parsed['server']}")
+
+            return (f"DRIVER={self.DB_DRIVER};"
+                    f"SERVER={parsed['server']};"
+                    f"DATABASE={parsed['database']};"
+                    f"UID={parsed['username']};"
+                    f"PWD={parsed['password']};")
+        else:
+            if self.DB_SERVER:
+                print(f"DB Server: {self.DB_SERVER}")
+
+            return (f"DRIVER={self.DB_DRIVER};"
+                    f"SERVER={self.DB_SERVER};"
+                    f"DATABASE={self.DB_NAME};"
+                    f"UID={self.DB_UID};"
+                    f"PWD={self.DB_PWD};")
 
 settings = Settings()
