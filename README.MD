@@ -48,3 +48,4 @@ The purpose of the PlantwisePlus.InsightReporting.MicroService.MachineLearningJO
   * python -m nltk.downloader wordnet
   * python -m nltk.downloader stopwords
   * python -m nltk.downloader punkt
+
