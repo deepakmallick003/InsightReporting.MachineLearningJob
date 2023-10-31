@@ -40,6 +40,9 @@ RUN python -m nltk.downloader wordnet
 #
 RUN python -m nltk.downloader punkt
 
+#
+RUN python -m nltk.downloader averaged_perceptron_tagger
+
 # 
 COPY insightreportingml.job/. ./
 
