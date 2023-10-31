@@ -18,6 +18,8 @@ cronjobs:
             nameAs: FileStoreSettings__StorageDirectory   
       - secret: insightreporting
         mappings:
+          - key: insightreporting-db-server
+            nameAs: InsightReporting_DB_SERVER
           - key: insightreporting-db-name
             nameAs: InsightReporting_DB_NAME
           - key: insightreporting-db-user-name
