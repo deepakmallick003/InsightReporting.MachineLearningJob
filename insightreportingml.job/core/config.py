@@ -29,9 +29,6 @@ class Settings(ApplicationSettings):
 
     @property
     def pyodbc_connection_string(self):
-        if self.DB_SERVER:
-            print(f"DB Server: {self.DB_SERVER}")
-
         return (f"DRIVER={self.DB_DRIVER};"
                 f"SERVER={self.DB_SERVER};"
                 f"DATABASE={self.DB_NAME};"
