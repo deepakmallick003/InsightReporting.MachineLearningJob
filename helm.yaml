@@ -25,6 +25,7 @@ cronjobs:
           - key: insightreporting-db-password
             nameAs: InsightReporting_DB_PWD 
 
+
 smbShares:
   - name: mlmodels
     location: \\cabifs\InsightReportingMLModels
