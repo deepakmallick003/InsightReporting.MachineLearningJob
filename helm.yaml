@@ -9,7 +9,7 @@ cronjobs:
 
     smbShares:
       - name: mlmodels
-        mountPath: /app/data
+        mountPath: /app/mlmodels
 
     mountSecrets:
       - secret: insightreporting-modelstorage
@@ -30,5 +30,5 @@ cronjobs:
 
 smbShares:
   - name: mlmodels
-    location: \\cabifs.cabi.org\InsightReportingMLModels
+    location: \\cabifs\InsightReportingMLModels
     credentials: contentsubmission-serviceaccount

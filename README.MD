@@ -37,7 +37,7 @@ The purpose of the PlantwisePlus.InsightReporting.MicroService.MachineLearningJO
 * Activate Virtual Environment
 **.venv\Scripts\activate**
 * Change Project Directory to insightreportingml.job
-**cd insight***
+**cd insightreportingml.job***
 * Install dependencies
 **pip install -r requirements.txt**
 * Run application
@@ -48,4 +48,5 @@ The purpose of the PlantwisePlus.InsightReporting.MicroService.MachineLearningJO
   * python -m nltk.downloader wordnet
   * python -m nltk.downloader stopwords
   * python -m nltk.downloader punkt
+  * python -m nltk.downloader averaged_perceptron_tagger
 

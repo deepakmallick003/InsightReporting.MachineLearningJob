@@ -5,8 +5,6 @@ from core.logging import initialise_seq
 from scripts.retraining import ReTraining
 from scripts.db import DatabaseManager
 
-initialise_seq()
-
 
 def retraining_job():   
     try:
@@ -79,4 +77,6 @@ def retraining_job():
 #     retraining_job()  
 #     time.sleep(interval)  
 
-retraining_job()
+if __name__ == "__main__":
+    initialise_seq()
+    retraining_job()

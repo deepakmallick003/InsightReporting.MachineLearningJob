@@ -10,3 +10,4 @@
 /insightreportingml.job/.env
 /insightreportingml.job/mlmodels/
 .env
+/insightreportingml.job/__pycache__
