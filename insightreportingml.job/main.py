@@ -1,4 +1,3 @@
-import sys
 import logging
 
 from core.logging import initialise_seq
@@ -9,7 +8,6 @@ from scripts.db import DatabaseManager
 def retraining_job():   
     try:
         logging.info('----------------------')
-        logging.info(' ')
 
         logging.info("Retraining Job Iteration Started")
 
@@ -36,7 +34,6 @@ def retraining_job():
 
                 if None in best_models_meta.values():
                     logging.error("One or more model versions were not assigned correctly.")
-                    sys.exit(1) # Exit with error
                 else:
                     logging.info('Fetching Training Data from DB')
                     unprocessed_training_data = db_instance.get_training_data()
@@ -47,7 +44,6 @@ def retraining_job():
                         if None in best_models_and_data:
                             logging.error('One or more model retraining failed')
                             db_instance.save_models_to_db(best_models_and_data, processing_status = 51) # status failed
-                            sys.exit(1) # Exit with error
                         else:
                             logging.info('Retraining Process Complete')
                             logging.info("Saving Best Models to Database")
@@ -59,16 +55,10 @@ def retraining_job():
                 logging.info('No Unprocessed Model Versions found, Iteration Skipped')
 
         logging.info("Retraining Job Iteration Complete.")
-
         logging.info('----------------------')
-        logging.info(' ')
-        sys.exit(0)  # Normal exit
     except Exception as e:
         logging.error('Retraining Retraining Iteration Failed with error: ' + str(e))
-
         logging.info('----------------------')
-        logging.info(' ')
-        sys.exit(1) # Exit with error
 
 # import time
 # # Interval time in seconds
