@@ -1,19 +1,6 @@
 applications:
   - name: "insightreportingml.job"
 
-    image:
-      strategy: Recreate
-      versions:
-        - replicas: 1
-      port: 81
-      probes:
-        enabled: true
-        liveness: /
-        ready: /
-
-    service:
-      enabled: false
-
     technology: static    
 
     seq:  
