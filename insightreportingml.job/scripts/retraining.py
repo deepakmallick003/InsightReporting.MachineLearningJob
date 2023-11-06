@@ -29,8 +29,7 @@ from nltk.stem import WordNetLemmatizer
 
 class ReTraining:
 
-    def __init__(self, logging):
-        self.logging = logging
+    def __init__(self):
         self.wd = os.getcwd()
         self.wl = WordNetLemmatizer()
 
@@ -72,7 +71,7 @@ class ReTraining:
         vectorizer=best_models_meta['lr_vectorizer']
         self.save_model_to_directory(model_id,version, model, vectorizer)
 
-        self.logging.info('Best Models Saved to File Storage')
+        print('Best Models Saved to File Storage')
 
     def generate_rfc_model(self, df_train):
 
@@ -263,11 +262,11 @@ class ReTraining:
        
     def train_models(self, unprocessed_training_data, best_models_meta):
 
-        self.logging.info('Retraining Started')
-        self.logging.info('Processing Training Data')
+        print('Retraining Started')
+        print('Processing Training Data')
         df_train = self.process_training_data(unprocessed_training_data)
 
-        self.logging.info('Splitting Training Data Into Subsets')
+        print('Splitting Training Data Into Subsets')
         training_subsets = self.get_training_subsets(df_train)
 
         # Initialize variables to store the best model and its metadata
@@ -280,14 +279,14 @@ class ReTraining:
         best_models_meta['lr_metrics'] = {'accuracy': 0, 'precision': 0, 'auc': 0}
         best_models_meta['lr_training_data'] = None
 
-        self.logging.info('Starting Retraining with Each Training Subset')
+        print('Starting Retraining with Each Training Subset')
         
         for index, df_train in enumerate(training_subsets, start=1):
 
             columns_to_drop = ['training_data_id', 'item_id']
             new_df_train = df_train.drop(columns=columns_to_drop)
 
-            self.logging.info(f'Retraining RFC Model with subset {index}') 
+            print(f'Retraining RFC Model with subset {index}') 
             # Random Forest Classifier
             rfc_model_details = self.generate_rfc_model(new_df_train)
 
@@ -298,9 +297,9 @@ class ReTraining:
                 best_models_meta['rfc_vectorizer'] = rfc_model_details['vectorizer']
                 best_models_meta['rfc_training_data'] = df_train
 
-            self.logging.info(f'Retraining RFC Model completed with subset {index}') 
+            print(f'Retraining RFC Model completed with subset {index}') 
 
-            self.logging.info(f'Retraining LR Model completed with subset {index}') 
+            print(f'Retraining LR Model completed with subset {index}') 
             # Logistic Regression
             lr_model_details = self.generate_lr_Model(new_df_train)
 
@@ -311,14 +310,14 @@ class ReTraining:
                 best_models_meta['lr_vectorizer'] = lr_model_details['vectorizer']
                 best_models_meta['lr_training_data'] = df_train
 
-            self.logging.info(f'Retraining LR Model completed with subset {index}') 
+            print(f'Retraining LR Model completed with subset {index}') 
         
-        self.logging.info('Completed Retraining with Each Training Subset')
-        self.logging.info('Saving Best Models to File Storage')
+        print('Completed Retraining with Each Training Subset')
+        print('Saving Best Models to File Storage')
 
         self.save_models(best_models_meta) # saves model pickle and joblib to file storage
 
-        self.logging.info('Returning Model Details to Main Thread')
+        print('Returning Model Details to Main Thread')
 
         return best_models_meta
 

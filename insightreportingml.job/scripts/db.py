@@ -5,9 +5,8 @@ import json
 from core.config import settings
 
 class DatabaseManager:
-    def __init__(self, logging):
+    def __init__(self):
         self.connection_string = settings.pyodbc_connection_string
-        self.logging = logging
 
     def __enter__(self):
         self.connection = self._connect()
@@ -20,16 +19,16 @@ class DatabaseManager:
     def _connect(self):
         try:
             connection = pyodbc.connect(self.connection_string)
-            self.logging.info("Connected to SQL Server")
+            print("Connected to SQL Server")
             return connection
         except Exception as e:
-            self.logging.error("Error connecting to SQL Server: "  + str(e))
+            print("Error connecting to SQL Server: "  + str(e))
             return None
         
     def close(self):
             if self.connection:
                 self.connection.close()
-                self.logging.info("SQL Server connection closed")
+                print("SQL Server connection closed")
         
     def get_unprocessed_model_versions(self):
         try:
@@ -37,7 +36,7 @@ class DatabaseManager:
             rows = self.cursor.fetchall()
             return rows 
         except pyodbc.Error as e:
-            self.logging.error("Error fetching unprocessed model versions from db: " + str(e))
+            print("Error fetching unprocessed model versions from db: " + str(e))
             return None 
         
     def get_training_data(self):
@@ -63,7 +62,7 @@ class DatabaseManager:
 
             return result_data
         except pyodbc.Error as e:
-            self.logging.error("Error fetching training data from db: " + str(e))
+            print("Error fetching training data from db: " + str(e))
             return None
 
     def save_models_to_db(self, best_models_and_data, processing_status=51):
@@ -133,7 +132,7 @@ class DatabaseManager:
             self.connection.commit()
 
         except pyodbc.Error as e:
-            self.logging.error("Error saving models to db: " + str(e))
+            print("Error saving models to db: " + str(e))
             return None
 
     def convert_to_int(self, value):
