@@ -1,20 +1,11 @@
-applications:
+cronjobs:
   - name: "insightreportingml.job"
+    schedule: "*/30 * * * *"   # every 30 minutes
 
-    image:
-      strategy: Recreate
-      versions:
-        - replicas: 1
-      probes:
-        enabled: false
-
-    technology: static    
+    technology: static
 
     seq:  
       -enabled: true
-
-    service:
-      enabled: false
 
     smbShares:
       - name: mlmodels

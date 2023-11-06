@@ -1,7 +1,7 @@
 import logging
 import time
 
-from core.logging import initialise_seq
+import core.logging
 from scripts.retraining import ReTraining
 from scripts.db import DatabaseManager
 
@@ -63,10 +63,13 @@ def retraining_job():
 
 
 if __name__ == "__main__":
-    initialise_seq()
+    core.logging.initialise_seq()
+       
+    print('Insight job is running')
+    logging.info("Insight job is running")
     
-    # # Interval time in seconds
-    interval = 600  
-    while True:
-        retraining_job()  
-        time.sleep(interval)
+    retraining_job()  
+       
+    # Interval time in seconds
+    interval = 60 * 2  
+    time.sleep(interval)
