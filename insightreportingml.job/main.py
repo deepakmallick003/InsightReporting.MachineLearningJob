@@ -1,7 +1,7 @@
 import logging
 import time
 
-import core.logging
+from core.logging import SeqLogging 
 from scripts.retraining import ReTraining
 from scripts.db import DatabaseManager
 
@@ -86,6 +86,8 @@ def retraining_job():
 
 if __name__ == "__main__":
 
+    SeqLogging() 
+    
     logging.info("Insight job is running")
     print('Insight job is running')
     
