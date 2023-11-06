@@ -1,10 +1,20 @@
 applications:
   - name: "insightreportingml.job"
 
+    image:
+      strategy: Recreate
+      versions:
+        - replicas: 1
+      probes:
+        enabled: false
+
     technology: static    
 
     seq:  
       -enabled: true
+
+    service:
+      enabled: false
 
     smbShares:
       - name: mlmodels
