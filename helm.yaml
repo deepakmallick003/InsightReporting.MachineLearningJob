@@ -1,6 +1,18 @@
-cronjobs:
+applications:
   - name: "insightreportingml.job"
-    schedule: "*/30 * * * *"   # every 30 minutes
+
+    image:
+      strategy: Recreate
+      versions:
+        - replicas: 1
+      port: 81
+      probes:
+        enabled: true
+        liveness: /
+        ready: /
+
+    service:
+      enabled: false
 
     technology: static    
 

@@ -1,4 +1,5 @@
 import logging
+import time
 
 from core.logging import initialise_seq
 from scripts.retraining import ReTraining
@@ -60,13 +61,12 @@ def retraining_job():
         logging.error('Retraining Retraining Iteration Failed with error: ' + str(e))
         logging.info('----------------------')
 
-# import time
-# # Interval time in seconds
-# interval = 10  
-# while True:
-#     retraining_job()  
-#     time.sleep(interval)  
 
 if __name__ == "__main__":
     initialise_seq()
-    retraining_job()
+    
+    # # Interval time in seconds
+    interval = 600  
+    while True:
+        retraining_job()  
+        time.sleep(interval)
