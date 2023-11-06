@@ -42,7 +42,6 @@ class TestRetrainingJob(unittest.TestCase):
 
         # Expected calls to logging.info
         expected_calls = [
-            call('----------------------'),
             call('Retraining Job Iteration Started'),
             call('Fetching Unprocessed Model Versions'),
             call('Unprocessed Models Versions found, Starting Retraining'),
@@ -51,8 +50,7 @@ class TestRetrainingJob(unittest.TestCase):
             call('Retraining Process Complete'),
             call('Saving Best Models to Database'),
             call('Succesfully Saved Models to Database'),
-            call('Retraining Job Iteration Complete.'),
-            call('----------------------')
+            call('Retraining Job Iteration Complete.')
         ]
         
         mock_logging.info.assert_has_calls(expected_calls)

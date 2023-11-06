@@ -7,6 +7,10 @@ cronjobs:
     seq:  
       -enabled: true
 
+    smbShares:
+      - name: mlmodels
+        mountPath: /app/mlmodels
+
     mountSecrets:
       - secret: insightreporting-modelstorage
         mappings:
@@ -22,3 +26,8 @@ cronjobs:
             nameAs: InsightReporting_DB_UID 
           - key: insightreporting-db-password
             nameAs: InsightReporting_DB_PWD 
+
+smbShares:
+  - name: mlmodels
+    location: \\cabifs.cabi.org\InsightReportingMLModels
+    credentials: contentsubmission-serviceaccount
